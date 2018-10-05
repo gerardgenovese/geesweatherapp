@@ -11,6 +11,9 @@ app.use('*/images',express.static('images'));
 app.get('/', (req, res) => {
     res.render('index.ejs');
 });
+app.get('/cityLinks', (req, res) => {
+    res.render('cityLinks.ejs');
+});
 
 app.listen(process.env.PORT || 3000, ()=> {
     console.log('server is running');
