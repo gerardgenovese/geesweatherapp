@@ -89,3 +89,108 @@ document.addEventListener("click", function(e) {
 
 /////////////////////NAVBAR ENDS////////////////////////////
 
+
+
+
+
+/////////////////////////////INDEX GET CITY INFO//////////////////////////////////
+
+
+
+if (document.body.classList.contains("index")){
+
+  //city codes for lookup
+  const cityID1 = 5128638;
+  const cityID2 = 4887442;
+  const cityID3 = 5162774;
+  const cityID4 = 4058076;
+  const cityID5 = 5368381;
+  const key = "f062c5c06e802d5ddf919342f82d2b1e";
+    //retreive data from api
+    function getCityData(){
+  
+      const weather = `https://api.openweathermap.org/data/2.5/group?id=${cityID1},${cityID2},${cityID3},${cityID4},${cityID5}&APPID=${key}&units=imperial`
+    
+      fetch(weather)
+        .then(res => res.json())
+        .then(data => {
+  
+          combineDataTypes(data);
+  
+        })
+      .catch(err => err);
+    }
+    getCityData();
+  
+    //extract specific data and combine together
+    function combineDataTypes(data){
+  
+      const cityNames = [];
+      const cityTemps = [];
+      const cityIcons = [];
+  
+      if(data){
+        //loop through arrays from data
+        const allData = data.list.map(val =>{
+          return val;
+        });
+    
+        //gets names of cities
+        const getNames = allData.forEach(names => {
+          cityNames.push(names.name);
+        });
+        //gets temp of city and converts to F from K
+        const getTemps = allData.map(val => {
+          const tempD = val.main.temp;
+          const temp = tempD.toFixed(0) + String.fromCharCode(176);
+          cityTemps.push(temp);
+        });
+        //gets all icon allData
+        const getIcons = allData.map(icons => {
+          cityIcons.push(icons.weather[0].icon);
+        });
+      }
+      createCity(cityNames, cityTemps, cityIcons);
+    }
+  
+    //create DOM elements from specific data passed by "combineDataTypes"
+    function createCity(name, temp, icon){
+  
+        const city = document.querySelectorAll(".city");
+      if(name,temp,icon){
+        city.forEach((cities, index) => {
+          let output = `
+            <a href="#" class="cityName cityName${index}">${name[index]}</a>
+            <div class="cityTemp">${temp[index]}</div>
+            <div class="cityIcon"><img src=http://openweathermap.org/img/w/${icon[index]}.png></div>
+            `;
+            cities.innerHTML = output;
+        });
+      }
+    }
+    // createCity();
+  
+      let targetCityForLink = document.body.addEventListener("click", function(e){
+      if (e.target.className === "cityName cityName0"){
+        sessionStorage.setItem("city", cityID1);
+        window.location.href="destination.ejs";
+      } else if (e.target.className === "cityName cityName1"){
+        sessionStorage.setItem("city", cityID2);
+        window.location.href="destination.ejs";
+      } else if (e.target.className === "cityName cityName2"){
+        sessionStorage.setItem("city", cityID3);
+        window.location.href="destination.ejs";
+      } else if (e.target.className === "cityName cityName3"){
+        sessionStorage.setItem("city", cityID4);
+        window.location.href="destination.ejs";
+      }	else if (e.target.className === "cityName cityName4"){
+        sessionStorage.setItem("city", cityID5);
+        window.location.href="destination.ejs";
+      }
+    });
+  
+  
+  }
+  
+
+  
