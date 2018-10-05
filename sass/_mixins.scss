@@ -1,0 +1,62 @@
+@mixin cityName{
+  font-family:arial;
+  font-size: 3rem;
+  color: $light-black
+}
+@mixin cityWeather{
+  font-family: georgia;
+  font-size: 2rem;
+}
+@mixin cityDetails{
+  font-family: times;
+  font-size: 1.8rem;
+}
+@mixin cityTemp{
+  font-size: 5rem;
+  font-family: "Trebuchet MS";
+  font-weight:300;
+  color: $light-black;
+}
+
+@mixin windHumidity{
+  font-size: 2rem;
+  font-family: "Lucida Sans";
+  font-weight: 500;
+  color: $light-black;
+}
+
+
+/*HOURLY FIVE WEATHER*/
+
+@mixin flexPad {
+  display:flex;
+  justify-content:space-around;
+  padding: 1rem;
+}
+@mixin header {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  border-top: 1px solid rgb(167, 163, 163);
+  padding: 3rem;
+}
+
+@mixin containFlex{
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  box-shadow: 2px 2px 2px rgb(230, 225, 225);
+  padding: .5rem;
+}
+
+@mixin hourly-five-time{
+  font-size: 1.4rem;
+  font-family: Verdana;
+  border-bottom: 1px solid rgb(223, 216, 216);
+}
+
+@mixin temp {
+  font-size: 1.5rem;
+  font-family: "Franklin Gothic Medium";
+}
+

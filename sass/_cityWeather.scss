@@ -1,0 +1,64 @@
+#cityInfo{
+  grid-column: 5/12;
+  grid-row: 7 /-1;
+}
+
+.city__container {
+  padding: 2rem;
+  background:rgb(243, 241, 241);
+  -moz-box-shadow: 0 0 5px $box-shadow;
+  -webkit-box-shadow: 0 0 5px $box-shadow;;
+  box-shadow: 0 0 5px $box-shadow;
+}
+
+
+.city__weather{
+  
+  &--contain{
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+
+    &-inner{
+      display:flex;
+      align-items:center;
+    }
+  }
+  &--icon {
+    width:8rem;
+  }
+  &--temp {
+    @include cityTemp;
+  }
+  &--wind,
+  &--humidity{
+    @include windHumidity;
+  }
+  &--unit{
+    font-size: 2rem;
+    padding: .4rem;
+  }
+}
+
+@media screen and (max-width:1025px){
+  #cityInfo{
+    grid-column: 1/-1;
+    grid-row: 8/-1;
+  }
+}
+@media screen and (max-width:550px){
+  .city__weather{
+    &--icon {
+      width:7rem;
+    }
+  }
+}
+@media screen and (max-width:400px){
+  .city__weather{
+    &--wind,
+    &--humidity{
+      font-size:1.5rem;
+    }
+
+  }
+}

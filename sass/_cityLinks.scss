@@ -1,0 +1,88 @@
+#cities{
+	display:block;
+	background-image: linear-gradient(to bottom, rgb(62, 62, 189), rgb(106, 106, 238));
+	background-repeat:no-repeat;
+	color:white;
+	// position:relative;
+	z-index:3;
+	grid-column: 2/15;
+	grid-row: 4/10;
+
+	& > h1 {
+		text-align:center;
+		padding: 1rem;
+		margin-bottom:2rem;
+	}
+}
+
+#cityLinks{
+	display:flex;
+	justify-content: space-around;
+}
+
+.city{
+	
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+}
+.cityTemp{
+	font-size:1.8rem;
+}
+.cityName{
+	color:black;
+	font-weight:bold;
+	font-size: 2rem;
+	text-decoration:none;
+	padding: .2rem .4rem;
+	margin:.5rem;
+	background:rgb(232, 234, 238);
+	border-radius:.5rem;
+	&:hover {
+		color: $nav-footer;
+	}
+}
+
+@media screen and (max-width: 768px){
+	#cities{
+		grid-column: 1/16;
+		grid-row:3/9;
+		& > h1 {
+			padding: .5rem;
+		}
+	}
+	.cityTemp{
+		font-size:1.5rem;
+	}
+	.cityName{
+		font-size: 1.5rem;
+	}
+}
+@media screen and (max-width: 550px){
+	#cities{
+		& > h1 {
+			padding: 0;
+		}
+	}
+
+	.cityName{
+		font-size: 1.2rem;
+	}
+}
+@media screen and (max-width: 420px){
+	#cities{
+		& > h1 {
+			padding: 0;
+		}
+	}
+
+	.cityName{
+		font-size: 1rem;
+	}
+}
+@media screen and (max-width: 420px){
+	.city{
+		text-align:center;
+	}
+}

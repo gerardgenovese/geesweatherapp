@@ -1,0 +1,50 @@
+#time {
+  grid-row: 5/6;
+  grid-column: 6/11;
+  text-align:center;
+  font-family: Franklin Gothic Medium;
+  font-size: 2rem;
+  font-weight: bold;
+  color: $light-black
+}
+
+.city__header{
+  margin-bottom: 2rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  
+  &--name {
+    @include cityName;
+  }
+  &--weather {
+    @include cityWeather;
+  }
+  &--details {
+    @include cityDetails;
+  }
+}
+
+@media screen and (max-width:1025px){
+  #time {
+    grid-row: 5/6;
+    grid-column: 1/-1;
+  }
+}
+@media screen and (max-width:350px){
+
+  #time {
+    font-size:1.5rem;
+  }
+
+  .city__header{
+
+    &--weather {
+      font-size:1.3rem;
+    }
+    &--details {
+      font-size:1.2rem;
+    }
+  }
+}

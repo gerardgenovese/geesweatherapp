@@ -1,0 +1,49 @@
+// @keyframes fadeIn {
+//     from {opacity: .5;}
+//     to {opacity: 1;}
+//   }
+//   #cityLinks{
+//     position:relative;
+//     z-index: 1;
+//   }
+//   #imgSlideShow {
+//     position: absolute;
+//     top:9.8%;
+//     left: 0;
+//     width: 100%;
+//     z-index: 0;
+//   }
+//   body {
+//     margin: 0;
+//     padding: 0;
+//   }
+  
+//   #one,
+//   #two,
+//   #three,
+//   #four {
+//     animation: fadeIn .5s;
+//     animation-fill-mode: forwards;
+//     opacity: 0;
+//   }
+  .onebg,
+  .twobg,
+  .threebg,
+  .fourbg  {
+    width: 100%;
+    height: 80vh;
+  }
+  
+  .overlay {
+    background: rgba(0,0,0,.4);
+    grid-row: 4/-1;
+    grid-column: 1/ -1;
+    width: 100%;
+    height: 80vh;
+    z-index: 1;
+  }
+  .imgSlides{
+    grid-row: 4/-1;
+    grid-column: 1/ -1;
+    padding:0;
+  }

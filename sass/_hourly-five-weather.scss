@@ -1,0 +1,136 @@
+
+
+#hourlyWeather,
+#fiveDayWeather{
+  padding: 3rem;
+}
+.fiveDay-contain{
+  display:flex;
+  justify-content:space-around;
+}
+
+.hourly{
+  @include flexPad;
+
+  &__header{
+    @include header;
+  }
+
+  &--info{
+    @include containFlex;
+  }
+
+  &--time{
+    @include hourly-five-time;
+  }
+
+  &--temp{
+    @include temp;
+  }
+}
+
+.fiveDay{
+  @include flexPad;
+
+  &__header{
+    @include header;
+  }
+
+  &--info{
+    @include containFlex;
+  }
+
+  &--day{
+    @include hourly-five-time;
+  }
+  &--temp{
+    @include temp;
+  }
+}
+
+@media screen and (max-width:550px){
+  .hourly{
+    &--time{
+     font-size:1rem;
+    }
+  }
+
+  .fiveDay{
+    &--day{
+     font-size:1rem;
+    }
+  }
+}
+
+@media screen and (max-width:460px){
+  .hourly{
+    &--info{
+     box-shadow:none;
+    }
+    &--icon{
+       width:4rem;
+     
+    }
+  }.fiveDay{
+    &--info{
+     box-shadow:none;
+    }
+    &--icon{
+       width:4rem;
+    }
+  }
+}
+@media screen and (max-width:380px){
+  .hourly{
+    &--info{
+     padding: .2rem;
+    }
+  }.fiveDay{
+    &--info{
+     padding: .2rem;
+    }
+  }
+}
+@media screen and (max-width:340px){
+  .hourly{
+    &--info{
+     padding: 0;
+    }
+    &--time{
+     padding: .2rem;
+     }
+  }.fiveDay{
+    &--info{
+     padding: 0;
+    }
+    &--time{
+     padding: .2rem;
+     }
+  }
+}
+@media screen and (max-width:325px){
+  .hourly{
+    &--time{
+     padding: .1rem;
+     }
+  }.fiveDay{
+
+    &--time{
+     padding: .1rem;
+     }
+  }
+}
+@media screen and (max-width:325px){
+  .hourly{
+    &--time{
+     font-size:.9rem;
+     }
+  }.fiveDay{
+
+    &--time{
+     font-size:.9rem;
+     }
+  }
+}
+
+

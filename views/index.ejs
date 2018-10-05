@@ -1,0 +1,92 @@
+
+<%include partials/header%>
+<body class="index">
+
+<div class="grid">
+
+		<nav id="nav">
+			<div class="test">
+				<img src="../images/logo.png" class="logo" alt="">
+				<p class="logo-text">Destination Weather</p>
+			</div>
+			<ul class="links">
+				<a href="/" class="aLink">Home</a>
+				<a href="/find_city" class="aLink">Find City</a>
+			</ul>
+		</nav>
+		<nav class="mobile-hide">
+			<nav id="nav-mobile">
+				<div class="test">
+					<img src="../images/logo.png" class="logo" alt="">
+					<p class="logo-text">Destination Weather</p>
+				</div>
+				<div class="hamburger" onclick="clicked();">
+					<div class="hamburger-line1"></div>
+					<div class="hamburger-line2"></div>
+					<div class="hamburger-line3"></div>
+				</div>
+			</nav>
+			<div class="menu">
+				<div class="links mobile-navLinks">
+					<div class="mobile-style">
+						<a href="/" class="aLink">Home</a>
+						<a href="/find_city" class="aLink">Find City</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+	<main id="cities">
+		<div id ="cityLinks">
+			<div class="city">
+				<!--js injection CLASS REFERENCE-->
+				<!-- <a href="#" class="cityName"></a>
+				<div class="cityTemp"></div>
+				<div class="cityIcon"></div> -->
+			</div>
+			<div class="city"></div>
+			<div class="city"></div>
+			<div class="city"></div>
+			<div class="city"></div>
+		</div>
+	</main>
+
+	<!-- <section id="imgSlideShow"> -->
+		<div class="overlay"></div>
+			<div class="imgSlides">
+				<div id="one">    
+					<img class="onebg" src="../images/img1.jpg">
+				</div>
+			</div> 
+			<div class="imgSlides">
+				<div id="two">    
+					<img class="twobg" src="../images/img2.jpg">
+				</div>
+			</div> 
+			<div class="imgSlides">
+				<div id="three">    
+					<img class="threebg" src="../images/img3.jpg">
+				</div>
+			</div>
+			<div class="imgSlides">
+				<div id="four">    
+					<img class="fourbg" src="../images/img4.jpg">
+				</div>
+			</div> 
+	<!-- </section> -->
+
+	
+	<!-- <img src="../images/weatherLady.png" class="weatherLady" alt="weather-lady">
+			<div class="text__box"></div>
+			<p class="text__box-text">Top travel destinations for today.</p> -->
+
+		<div class="top__travel">
+				<p class="top__travel--text">Top Travel Destinations for Today</p>
+				<img src="../images/weatherLady.png" class="weatherLady" alt="weather-lady">
+		</div>
+
+</div><!--grid-->
+
+
+<%include partials/footer%>		 
+

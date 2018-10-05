@@ -1,0 +1,596 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0; }
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(45, 2rem);
+  padding: 0; }
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+/*HOURLY FIVE WEATHER*/
+#time {
+  grid-row: 5/6;
+  grid-column: 6/11;
+  text-align: center;
+  font-family: Franklin Gothic Medium;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #494444; }
+
+.city__header {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .city__header--name {
+    font-family: arial;
+    font-size: 3rem;
+    color: #494444; }
+  .city__header--weather {
+    font-family: georgia;
+    font-size: 2rem; }
+  .city__header--details {
+    font-family: times;
+    font-size: 1.8rem; }
+
+@media screen and (max-width: 1025px) {
+  #time {
+    grid-row: 5/6;
+    grid-column: 1/-1; } }
+
+@media screen and (max-width: 350px) {
+  #time {
+    font-size: 1.5rem; }
+  .city__header--weather {
+    font-size: 1.3rem; }
+  .city__header--details {
+    font-size: 1.2rem; } }
+
+#cities {
+  display: block;
+  background-image: linear-gradient(to bottom, #3e3ebd, #6a6aee);
+  background-repeat: no-repeat;
+  color: white;
+  z-index: 3;
+  grid-column: 2/15;
+  grid-row: 4/10; }
+  #cities > h1 {
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 2rem; }
+
+#cityLinks {
+  display: flex;
+  justify-content: space-around; }
+
+.city {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.cityTemp {
+  font-size: 1.8rem; }
+
+.cityName {
+  color: black;
+  font-weight: bold;
+  font-size: 2rem;
+  text-decoration: none;
+  padding: .2rem .4rem;
+  margin: .5rem;
+  background: #e8eaee;
+  border-radius: .5rem; }
+  .cityName:hover {
+    color: #a4a4e6; }
+
+@media screen and (max-width: 768px) {
+  #cities {
+    grid-column: 1/16;
+    grid-row: 3/9; }
+    #cities > h1 {
+      padding: .5rem; }
+  .cityTemp {
+    font-size: 1.5rem; }
+  .cityName {
+    font-size: 1.5rem; } }
+
+@media screen and (max-width: 550px) {
+  #cities > h1 {
+    padding: 0; }
+  .cityName {
+    font-size: 1.2rem; } }
+
+@media screen and (max-width: 420px) {
+  #cities > h1 {
+    padding: 0; }
+  .cityName {
+    font-size: 1rem; } }
+
+@media screen and (max-width: 420px) {
+  .city {
+    text-align: center; } }
+
+#errorMessage {
+  display: none;
+  text-align: center;
+  font-size: 2rem;
+  font-family: Helvetica;
+  font-weight: bold;
+  background: red;
+  color: white;
+  grid-row: 3/6;
+  grid-column: 1/-1;
+  justify-content: center;
+  align-items: center; }
+
+#find {
+  border: 2px solid #472fd1;
+  font-size: 16px; }
+
+.search-header {
+  font-size: 2rem;
+  font-family: Verdana;
+  text-transform: uppercase;
+  grid-column: 1/-1;
+  grid-row: 6/8;
+  margin: 0 auto; }
+
+.search-input {
+  grid-column: 6/11;
+  grid-row: 8/10; }
+
+.search-submit {
+  grid-column: 6/11;
+  grid-row: 11/13;
+  border-radius: 10rem;
+  outline: none;
+  border: none;
+  transition: .2s;
+  background: #4f4fa0;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase; }
+  .search-submit:hover {
+    transform: scale(1.2);
+    box-shadow: 2px 1px 2px #ccc7c7;
+    transition: .2s; }
+  .search-submit:focus {
+    transform: scale(0.9);
+    box-shadow: none;
+    transition: .2s;
+    background: red;
+    color: white; }
+
+#find__city-container {
+  background: #e0e0d1;
+  border-radius: 1rem;
+  box-shadow: 1px 2px 4px #dfd5d5;
+  grid-column: 6/11;
+  grid-row: 14 /32; }
+
+.find__city {
+  display: flex;
+  align-items: center; }
+  .find__city--name {
+    font-family: arial;
+    font-size: 3rem;
+    color: #494444;
+    text-align: center;
+    padding: 1rem 0;
+    background: #5656f7;
+    color: white; }
+  .find__city--contain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  .find__city--temp {
+    font-size: 5rem;
+    font-family: "Trebuchet MS";
+    font-weight: 300;
+    color: #494444; }
+  .find__city--weather {
+    font-family: georgia;
+    font-size: 2rem; }
+  .find__city--details {
+    font-family: times;
+    font-size: 1.8rem; }
+  .find__city--icon {
+    width: 10rem; }
+  .find__city--wind, .find__city--humidity {
+    font-size: 2rem;
+    font-family: "Lucida Sans";
+    font-weight: 500;
+    color: #494444;
+    margin: 1rem; }
+
+@media screen and (max-width: 768px) {
+  #find__city-container {
+    background: #e0e0d1;
+    border-radius: 1rem;
+    box-shadow: 1px 2px 4px #dfd5d5;
+    grid-column: 1/-1;
+    grid-row: 14 /32; } }
+
+@media screen and (max-width: 450px) {
+  .search-header {
+    font-size: 1.2rem; }
+  .search-input {
+    grid-column: 5/12;
+    grid-row: 8/10; }
+  .search-submit {
+    grid-column: 5/12;
+    grid-row: 11/13; } }
+
+.footer {
+  background-color: #a4a4e6;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .footer-text {
+    font-size: 2rem; }
+
+#cityInfo {
+  grid-column: 5/12;
+  grid-row: 7 /-1; }
+
+.city__container {
+  padding: 2rem;
+  background: #f3f1f1;
+  -moz-box-shadow: 0 0 5px rgba(159, 153, 153, 0.8);
+  -webkit-box-shadow: 0 0 5px rgba(159, 153, 153, 0.8);
+  box-shadow: 0 0 5px rgba(159, 153, 153, 0.8); }
+
+.city__weather--contain {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+  .city__weather--contain-inner {
+    display: flex;
+    align-items: center; }
+
+.city__weather--icon {
+  width: 8rem; }
+
+.city__weather--temp {
+  font-size: 5rem;
+  font-family: "Trebuchet MS";
+  font-weight: 300;
+  color: #494444; }
+
+.city__weather--wind, .city__weather--humidity {
+  font-size: 2rem;
+  font-family: "Lucida Sans";
+  font-weight: 500;
+  color: #494444; }
+
+.city__weather--unit {
+  font-size: 2rem;
+  padding: .4rem; }
+
+@media screen and (max-width: 1025px) {
+  #cityInfo {
+    grid-column: 1/-1;
+    grid-row: 8/-1; } }
+
+@media screen and (max-width: 550px) {
+  .city__weather--icon {
+    width: 7rem; } }
+
+@media screen and (max-width: 400px) {
+  .city__weather--wind, .city__weather--humidity {
+    font-size: 1.5rem; } }
+
+#hourlyWeather,
+#fiveDayWeather {
+  padding: 3rem; }
+
+.fiveDay-contain {
+  display: flex;
+  justify-content: space-around; }
+
+.hourly {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem; }
+  .hourly__header {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    border-top: 1px solid #a7a3a3;
+    padding: 3rem; }
+  .hourly--info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 2px #e6e1e1;
+    padding: .5rem; }
+  .hourly--time {
+    font-size: 1.4rem;
+    font-family: Verdana;
+    border-bottom: 1px solid #dfd8d8; }
+  .hourly--temp {
+    font-size: 1.5rem;
+    font-family: "Franklin Gothic Medium"; }
+
+.fiveDay {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem; }
+  .fiveDay__header {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    border-top: 1px solid #a7a3a3;
+    padding: 3rem; }
+  .fiveDay--info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 2px #e6e1e1;
+    padding: .5rem; }
+  .fiveDay--day {
+    font-size: 1.4rem;
+    font-family: Verdana;
+    border-bottom: 1px solid #dfd8d8; }
+  .fiveDay--temp {
+    font-size: 1.5rem;
+    font-family: "Franklin Gothic Medium"; }
+
+@media screen and (max-width: 550px) {
+  .hourly--time {
+    font-size: 1rem; }
+  .fiveDay--day {
+    font-size: 1rem; } }
+
+@media screen and (max-width: 460px) {
+  .hourly--info {
+    box-shadow: none; }
+  .hourly--icon {
+    width: 4rem; }
+  .fiveDay--info {
+    box-shadow: none; }
+  .fiveDay--icon {
+    width: 4rem; } }
+
+@media screen and (max-width: 380px) {
+  .hourly--info {
+    padding: .2rem; }
+  .fiveDay--info {
+    padding: .2rem; } }
+
+@media screen and (max-width: 340px) {
+  .hourly--info {
+    padding: 0; }
+  .hourly--time {
+    padding: .2rem; }
+  .fiveDay--info {
+    padding: 0; }
+  .fiveDay--time {
+    padding: .2rem; } }
+
+@media screen and (max-width: 325px) {
+  .hourly--time {
+    padding: .1rem; }
+  .fiveDay--time {
+    padding: .1rem; } }
+
+@media screen and (max-width: 325px) {
+  .hourly--time {
+    font-size: .9rem; }
+  .fiveDay--time {
+    font-size: .9rem; } }
+
+.onebg,
+.twobg,
+.threebg,
+.fourbg {
+  width: 100%;
+  height: 80vh; }
+
+.overlay {
+  background: rgba(0, 0, 0, 0.4);
+  grid-row: 4/-1;
+  grid-column: 1/ -1;
+  width: 100%;
+  height: 80vh;
+  z-index: 1; }
+
+.imgSlides {
+  grid-row: 4/-1;
+  grid-column: 1/ -1;
+  padding: 0; }
+
+#nav {
+  display: block; }
+
+.mobile-hide {
+  display: none; }
+
+#nav {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: 1/-1;
+  grid-row: 1/4;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.144); }
+
+.test {
+  display: flex;
+  align-items: center; }
+
+.logo {
+  width: 7rem;
+  margin-left: 3rem; }
+
+.logo-text {
+  margin-left: 5rem;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-family: "Lucida sans";
+  font-weight: bold;
+  letter-spacing: 3px; }
+
+.links {
+  list-style: none;
+  text-transform: uppercase;
+  margin-right: 5rem; }
+
+.aLink {
+  text-decoration: none;
+  padding: 0 1rem;
+  font-size: 2rem;
+  font-family: "Trebuchet MS"; }
+
+@media screen and (max-width: 768px) {
+  #nav {
+    display: none; }
+  .mobile-hide {
+    display: block;
+    grid-column: 1/-1;
+    grid-row: 1/3;
+    background-color: white;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.144); }
+  #nav-mobile {
+    height: 4rem;
+    margin: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+  .logo {
+    width: 4rem;
+    margin-left: 0; }
+  .logo-text {
+    margin-left: 5rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-family: "Lucida sans";
+    font-weight: bold;
+    letter-spacing: 3px; }
+  .hamburger {
+    height: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative; }
+  .hamburger > * {
+    width: 2rem;
+    height: 0.2rem;
+    background-color: black; }
+  .hamburger-line1 {
+    position: absolute;
+    top: 0; }
+  .hamburger-line2 {
+    position: absolute;
+    top: 50%; }
+  .hamburger-line3 {
+    position: absolute;
+    top: 100%; }
+  .menu {
+    width: 0;
+    height: 100vh;
+    background: gray;
+    transition: 0.3s;
+    position: relative;
+    z-index: 15; }
+  .menu2 {
+    width: 50%;
+    height: 100vh;
+    background: gray;
+    transition: 0.3s;
+    position: relative;
+    z-index: 15; }
+  .links {
+    margin: 0; }
+  .aLink {
+    width: 100%;
+    text-align: center;
+    margin: 2rem 0;
+    padding: 0;
+    font-size: 2rem;
+    color: white; }
+  .aLink:focus {
+    background-color: #a4a4e6;
+    color: red; }
+  .mobile-navLinks {
+    display: none; }
+  .mobile-style {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; } }
+
+@media screen and (max-width: 400px) {
+  .logo-text {
+    margin-left: 3rem;
+    justify-content: space-between; } }
+
+@media screen and (max-width: 320px) {
+  .logo-text {
+    font-size: .7rem; } }
+
+.top__travel {
+  grid-column: 7/10;
+  grid-row: 12/20;
+  z-index: 1;
+  background: #e9edf3;
+  box-shadow: 2px 2px 5px black;
+  animation: fadeIn 1s ease-in; }
+  .top__travel--text {
+    font-size: 3rem;
+    text-align: center;
+    padding: 2rem;
+    font-family: georgia;
+    text-transform: uppercase; }
+
+.weatherLady {
+  grid-column: 3;
+  grid-row: 9;
+  height: 40rem;
+  z-index: 2; }
+
+@media screen and (max-width: 1250px) {
+  .top__travel {
+    grid-column: 6/11; }
+    .top__travel--text {
+      font-size: 2rem;
+      padding: 1rem; } }
+
+@media screen and (max-width: 768px) {
+  .top__travel {
+    grid-column: 5/12;
+    grid-row: 12/20; }
+    .top__travel--text {
+      font-size: 3rem; } }
+
+@media screen and (max-width: 550px) {
+  .top__travel {
+    grid-column: 4/13; }
+    .top__travel--text {
+      font-size: 2rem; } }

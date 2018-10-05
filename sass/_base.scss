@@ -1,0 +1,48 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x:hidden;
+}
+
+$light-black: rgb(73, 68, 68);
+$box-shadow: hsla(0, 3%, 61%, 0.8);
+$nav-footer: rgb(164, 164, 230);
+
+$m-font: .8rem;
+$s-font: .6rem;
+
+
+.grid {
+  display: grid;
+grid-template-columns: repeat(15, 1fr);
+grid-template-rows: repeat(45, 2rem);
+padding: 0;
+;
+}
+
+@keyframes fadeInLeft {
+  0% {
+     opacity: 0;
+     transform: translateX(-10px);
+  }
+  100% {
+     opacity: 1;
+     transform: translateX(0);
+  }
+} 
+
+@keyframes fadeIn {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity:1;
+  }
+}
+

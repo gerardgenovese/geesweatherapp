@@ -1,0 +1,152 @@
+#errorMessage{
+  display:none;
+  text-align:center;
+  font-size: 2rem;
+  font-family: Helvetica;
+  font-weight:bold;
+  background: red;
+  color:white;
+  grid-row: 3/6;
+  grid-column: 1/-1;
+  justify-content:center;
+  align-items:center;
+}
+
+#find{
+  border: 2px solid rgb(71, 47, 209);
+  font-size:16px;
+}
+
+.search{
+  &-header{
+    font-size:2rem;
+    font-family:Verdana;
+    text-transform:uppercase;
+    grid-column: 1/-1;
+    grid-row: 6/8;
+    margin: 0 auto;
+  }
+  &-input{
+    grid-column: 6/11;
+    grid-row:8/10;
+  }
+  &-submit{
+    grid-column: 6/11;
+    grid-row:11/13;
+    border-radius:10rem;
+    outline:none;
+    border:none;
+    transition:.2s;
+    background: rgb(79, 79, 160);
+    color:white;
+    font-weight:bold;
+    text-transform:uppercase;
+
+    
+    &:hover{
+      transform:scale(1.2);
+      box-shadow: 2px 1px 2px rgb(204, 199, 199);
+      transition:.2s;
+    }
+    &:focus{
+      transform:scale(.9);
+      box-shadow: none;
+      transition:.2s;
+      background:red;
+      color:white;
+    }
+  }
+}
+
+
+
+
+#find__city-container{
+  background:rgb(224, 224, 209);
+  border-radius:1rem;
+  box-shadow: 1px 2px 4px rgb(223, 213, 213);
+  grid-column: 6/11;
+  grid-row: 14 /32;
+}
+
+.find {
+  
+  &__city{
+    display:flex;
+    align-items:center;
+
+    &--name{
+      @include cityName;
+      text-align:center;
+      padding: 1rem 0;
+      background: rgb(86, 86, 247);
+      color:white;
+    }
+
+    &--contain{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+    }
+
+    &--temp{
+      @include cityTemp;
+    }
+
+    &--weather{
+    @include cityWeather;
+    }
+
+    &--details{
+      @include cityDetails;
+    }
+
+    &--icon{
+      width:10rem;
+    }
+    
+    &--wind,
+    &--humidity{
+      @include windHumidity;
+      margin: 1rem;
+    }
+
+  
+   }
+
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width:768px){
+  #find__city-container{
+    background:rgb(224, 224, 209);
+    border-radius:1rem;
+    box-shadow: 1px 2px 4px rgb(223, 213, 213);
+    grid-column: 1/-1;
+    grid-row: 14 /32;
+  }
+}
+@media screen and (max-width:450px){
+  .search{
+    &-header{
+      font-size:1.2rem;
+    }
+    &-input{
+      grid-column: 5/12;
+      grid-row:8/10;
+    }
+    &-submit{
+      grid-column: 5/12;
+      grid-row:11/13;
+    }
+  }
+}
+
+
