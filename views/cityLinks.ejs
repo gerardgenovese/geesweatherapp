@@ -1,0 +1,112 @@
+<%include partials/header%>
+<body class="cityLinks">
+
+
+<div class="grid">
+
+		<nav id="nav">
+			<div class="test">
+				<img src="../images/logo.png" class="logo" alt="">
+				<p class="logo-text">Destination Weather</p>
+			</div>
+			<ul class="links">
+				<a href="/" class="aLink">Home</a>
+				<a href="/find_city" class="aLink">Find City</a>
+			</ul>
+		</nav>
+		<nav class="mobile-hide">
+			<nav id="nav-mobile">
+				<div class="test">
+					<img src="../images/logo.png" class="logo" alt="">
+					<p class="logo-text">Destination Weather</p>
+				</div>
+				<div class="hamburger" onclick="clicked();">
+					<div class="hamburger-line1"></div>
+					<div class="hamburger-line2"></div>
+					<div class="hamburger-line3"></div>
+				</div>
+			</nav>
+			<div class="menu">
+				<div class="links mobile-navLinks">
+					<div class="mobile-style">
+						<a href="/" class="aLink">Home</a>
+						<a href="/find_city" class="aLink">Find City</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+	<div id="time"></div>
+	<main id="cityInfo">
+		<div class="city__container">
+			<div class="city__header-contain">
+				<div class="city__header">
+					<!--js injection getCityInfo-->
+					<!-- <div class="city__header--name"></div>
+					<div class="city__header--weather"></div>
+					<div class="city__header--details"></div> -->
+				</div>
+				<div id="city__weather">
+					<div class="city__weather">
+						<!--js injection getCityInfo-->
+						<!-- <div class="city__weather--contain">
+							<div class="city__weather--contain-inner">
+								<img src ="" class="city__weather--icon"/>
+								<div class="city__weather--temp"></div>
+							</div>
+							<div>
+								<div class="city__weather--wind"></div>
+								<div class="city__weather--humidity"></div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+
+
+			<div id="hourlyWeather">
+				<h3 class="hourly__header">Hourly Forcast</h3>
+				<div class="hourly">
+				<!--js injection getCityInfo-->
+					<div class="hourly--info"></div>
+					<div class="hourly--info"></div>
+					<div class="hourly--info"></div>
+					<div class="hourly--info"></div>
+					<div class="hourly--info"></div>
+					<div class="hourly--info"></div>
+					<div class="hourly--info">
+						<!-- <div class="hourly--time"></div>
+						<img src ="" class="hourly--icon"/>
+						<div class="hourly--temp"></div> -->
+					</div>
+				</div>
+			</div>
+
+			<div id="fiveDayWeather">
+				<h3 class="fiveDay__header">5 Day Forecast</h3>
+				<div class="fiveDay-contain">
+					<!--js injection getCityInfo-->
+					<div class="fiveDay"></div>
+					<div class="fiveDay"></div>
+					<div class="fiveDay"></div>
+					<div class="fiveDay"></div>
+					<div class="fiveDay">
+						<!-- <div class="fiveDay--info">
+							<div class="fiveDay--day"></div>
+							<img src ="" />
+							<div class="fiveDay--temp"></div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div><!--city container-->
+	</main>
+
+
+</div> <!--grid-->
+
+<%include partials/footer%>		 
+
+
+</body>
+</html>

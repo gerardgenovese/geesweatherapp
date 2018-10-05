@@ -87,13 +87,13 @@ document.addEventListener("click", function(e) {
 
 
 
-/////////////////////NAVBAR ENDS////////////////////////////
-
-
-
-
-
-/////////////////////////////INDEX GET CITY INFO//////////////////////////////////
+///////////////////////////////NAVBAR ENDS/////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+/////////////////////////////INDEX GET 5 CITY INFO//////////////////////////////////
 
 
 
@@ -168,29 +168,184 @@ if (document.body.classList.contains("index")){
         });
       }
     }
-    // createCity();
-  
-      let targetCityForLink = document.body.addEventListener("click", function(e){
-      if (e.target.className === "cityName cityName0"){
-        sessionStorage.setItem("city", cityID1);
-        window.location.href="destination.ejs";
-      } else if (e.target.className === "cityName cityName1"){
-        sessionStorage.setItem("city", cityID2);
-        window.location.href="destination.ejs";
-      } else if (e.target.className === "cityName cityName2"){
-        sessionStorage.setItem("city", cityID3);
-        window.location.href="destination.ejs";
-      } else if (e.target.className === "cityName cityName3"){
-        sessionStorage.setItem("city", cityID4);
-        window.location.href="destination.ejs";
-      }	else if (e.target.className === "cityName cityName4"){
-        sessionStorage.setItem("city", cityID5);
-        window.location.href="destination.ejs";
-      }
-    });
-  
-  
-  }
-  
+    let targetCityForLink = document.body.addEventListener("click", function(e){
+    if (e.target.className === "cityName cityName0"){
+      sessionStorage.setItem("city", cityID1);
+      window.location.href="/cityLinks";
+    } else if (e.target.className === "cityName cityName1"){
+      sessionStorage.setItem("city", cityID2);
+      window.location.href="/cityLinks";
+    } else if (e.target.className === "cityName cityName2"){
+      sessionStorage.setItem("city", cityID3);
+      window.location.href="/cityLinks";
+    } else if (e.target.className === "cityName cityName3"){
+      sessionStorage.setItem("city", cityID4);
+      window.location.href="/cityLinks";
+    }	else if (e.target.className === "cityName cityName4"){
+      sessionStorage.setItem("city", cityID5);
+      window.location.href="/cityLinks";
+    }
+  });
+
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////WHEN A 5 CITY LINK CLICKED JS BELOW GETS THAT INFO/////////////////////
 
   
+
+
+
+//only use if the document body has correct class (keeps console clean)
+if (document.body.classList.contains("cityLinks")){
+
+
+  //fetch forecast info
+  function propagateCityInfo(){
+
+    const key = "f062c5c06e802d5ddf919342f82d2b1e";
+    const forecastID = sessionStorage.getItem("city");
+    const forecast = `https://api.openweathermap.org/data/2.5/forecast?id=${forecastID}&APPID=${key}&units=imperial`;
+
+   
+    fetch(forecast)
+      .then(res => res.json())
+      .then(data => {   
+      retreiveCityData(data);
+    })
+      .catch(err => err);
+  }
+  propagateCityInfo();
+
+
+
+function retreiveCityData(data){
+  
+  createCityHeader(data);
+
+  const time = [];
+  const day = [];
+  const temps = [];
+  const icons = [];
+ 
+  if(data){
+////////////HOURLY FORECAST TIME AND DAY////////////
+    data.list.forEach(val => {
+      let getTime = val.dt_txt;
+      let getDay = val.dt_txt;
+  
+      //slice out time & date
+      getTime = getTime.slice(11);
+      getDay = getDay.slice(5, 10);
+      day.push(getDay);
+
+      //create custom AM PM ending
+      let AMPM;
+      //ensure time looks normal
+      if (parseInt(getTime) > 12){
+        AMPM = "PM";
+        getTime = parseInt(getTime) - 12 + ":00" + AMPM;
+      } else if (parseInt(getTime) === 0){
+        getTime = "12:00AM";
+      } else if (parseInt(getTime) === 12){
+        getTime = "12:00PM";
+      } else {
+        AMPM = "AM";
+        getTime = parseInt(getTime) + ":00" + AMPM;
+      }
+      //push all times to array with AM or PM 
+      time.push(getTime);
+
+//////////TEMPS AND ICONS/////////////
+      const tempD = val.main.temp;
+      const tempX = tempD.toFixed(0) + String.fromCharCode(176);
+      temps.push(tempX)
+      icons.push(val.weather[0].icon);
+
+    });
+  }
+  createSingleCityInfo(time,day,temps,icons);
+}
+
+
+function createCityHeader(data){
+  // console.log(data);  
+
+  if(data){
+
+    const name = data.city.name;
+    const weather = data.list[0].weather[0].main;
+    const detailsData = data.list[0].weather[0].description;
+    const details = detailsData.charAt(0).toUpperCase() + detailsData.slice(1);
+    const iconData = data.list[0].weather[0].icon;
+    const icon = `http://openweathermap.org/img/w/${iconData}.png`;
+    const tempD = data.list[0].main.temp;
+    const temp = tempD.toFixed(0) + String.fromCharCode(176); 
+    const wind = data.list[0].wind.speed + "mph";
+    const humidity = data.list[0].main.humidity;
+    
+    const cityHeader = document.querySelector(".city__header-contain"); 
+
+    let cityHeaderOutput = `
+    <div class="city__header">
+      <div class="city__header--name">${name}</div>
+      <div class="city__header--weather">${weather}</div>
+      <div class="city__header--details">( ${details} )</div>
+    </div>
+    <div class="city__weather--contain">
+      <div class="city__weather--contain-inner">
+        <img src ="${icon}" class="city__weather--icon"/>
+        <div class="city__weather--temp">${temp}</div>
+      </div>
+      <div>
+        <div class="city__weather--wind">Wind: ${wind}</div>
+        <div class="city__weather--humidity">Humidity: ${humidity}%</div>
+      </div>
+    </div>
+    `;
+    cityHeader.innerHTML = cityHeaderOutput;
+  }
+}
+
+
+function createSingleCityInfo(time,day,temps,icons){
+
+///////PROPAGATE HOURLY FORECAST////////
+  const hourlyInfo = document.querySelectorAll(".hourly--info");
+  const fiveDay = document.querySelectorAll(".fiveDay");
+  if(time,day,temps,icons){
+    hourlyInfo.forEach((info, index) => {
+      let hourlyOutput = `
+      <div class="hourly--time">${time[index]}</div>
+      <img src=https://openweathermap.org/img/w/${icons[index]}.png class="hourly--icon"/>
+      <div class="hourly--temp">${temps[index]}</div>
+      `;
+      info.innerHTML = hourlyOutput;
+    });
+    // console.log(time);
+    /////////PROPAGATE 5 DAY FORECAST//////////
+    fiveDay.forEach((info, index) => {
+      let fiveDayOutput = `
+      <div class="fiveDay--info">
+        <div class="fiveDay--day">${day[index]}</div>
+        <img src=https://openweathermap.org/img/w/${icons[index]}.png class="fiveDay--icon"/>
+        <div class="fiveDay--temp">${temps[index]}</div>
+      </div>    
+      `;  
+      info.innerHTML = fiveDayOutput;   
+    }); 
+  }
+}
+
+
+
+}
+
+
+
+
+
