@@ -162,7 +162,7 @@ if (document.body.classList.contains("index")){
           let output = `
             <a href="#" class="cityName cityName${index}">${name[index]}</a>
             <div class="cityTemp">${temp[index]}</div>
-            <div class="cityIcon"><img src=http://openweathermap.org/img/w/${icon[index]}.png></div>
+            <div class="cityIcon"><img src=https://openweathermap.org/img/w/${icon[index]}.png></div>
             `;
             cities.innerHTML = output;
         });
