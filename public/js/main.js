@@ -109,7 +109,7 @@ if (document.body.classList.contains("index")){
     //retreive data from api
     function getCityData(){
   
-      const weather = `https://api.openweathermap.org/data/2.5/group?id=${cityID1},${cityID2},${cityID3},${cityID4},${cityID5}&APPID=${key}&units=imperial`
+      const weather = `http://api.openweathermap.org/data/2.5/group?id=${cityID1},${cityID2},${cityID3},${cityID4},${cityID5}&APPID=${key}&units=imperial`
     
       fetch(weather)
         .then(res => res.json())
