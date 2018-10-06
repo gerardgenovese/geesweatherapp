@@ -109,7 +109,7 @@ if (document.body.classList.contains("index")){
     //retreive data from api
     function getCityData(){
   
-      const weather = `http://api.openweathermap.org/data/2.5/group?id=${cityID1},${cityID2},${cityID3},${cityID4},${cityID5}&APPID=${key}&units=imperial`
+      const weather = `https://api.openweathermap.org/data/2.5/group?id=${cityID1},${cityID2},${cityID3},${cityID4},${cityID5}&APPID=${key}&units=imperial`
     
       fetch(weather)
         .then(res => res.json())
@@ -282,7 +282,7 @@ function createCityHeader(data){
     const detailsData = data.list[0].weather[0].description;
     const details = detailsData.charAt(0).toUpperCase() + detailsData.slice(1);
     const iconData = data.list[0].weather[0].icon;
-    const icon = `http://openweathermap.org/img/w/${iconData}.png`;
+    const icon = `https://openweathermap.org/img/w/${iconData}.png`;
     const tempD = data.list[0].main.temp;
     const temp = tempD.toFixed(0) + String.fromCharCode(176); 
     const wind = data.list[0].wind.speed + "mph";
