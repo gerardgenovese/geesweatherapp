@@ -442,7 +442,163 @@ function addError() {
 
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////IMAGE SLIDER JS LOGIC BELOW/////////////////////
+
+
+
+if (document.body.classList.contains("index")){
+  let imgSlideShowIndex = 0;
+
+  function imgSlideShow() {
+    let i;
+    let imgSlides = document.getElementsByClassName("imgSlides");
+    for (i = 0; i < imgSlides.length; i++) {
+      imgSlides[i].style.display = "none";  
+    }
+    imgSlideShowIndex++;
+    if (imgSlideShowIndex > imgSlides.length) {imgSlideShowIndex = 1}    
+    imgSlides[imgSlideShowIndex-1].style.display = "block";  
+    setTimeout(imgSlideShow, 10000);    
+  }
+  imgSlideShow();
+}
 
 
 
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////CUSTOM DATE/TIME JS LOGIC BELOW/////////////////////
+
+
+
+if (document.body.classList.contains("destination")){
+
+  function setDate() {
+  
+    var now = new Date();
+  
+    var seconds = now.getSeconds().toString();
+    var mins = now.getMinutes().toString();
+    var hour = now.getHours().toString();
+  
+    if (hour > 12) {
+      hour -= 12;
+    }
+    if (mins < 10) {
+      mins = 0 + mins;
+    }
+    if (seconds < 10) {
+      seconds = 0 + seconds;
+    }
+    /*------- check this over AMPM-----*/
+    var AMPM = function() {
+      var now = new Date();
+      var hour = now.getHours();
+  
+      if (hour > 12) {
+        return ' PM';
+      } else {
+        return ' AM';
+      } 
+    }
+    /*--------GET THE DAY--------------------*/
+  
+    switch (now.getDay()) {
+      case 0:
+          day = "Sunday";
+          break;
+      case 1:
+          day = "Monday";
+          break;
+      case 2:
+          day = "Tuesday";
+          break;
+      case 3:
+          day = "Wednesday";
+          break;
+      case 4:
+          day = "Thursday";
+          break;
+      case 5:
+          day = "Friday";
+          break;
+      case 6:
+          day = "Saturday";
+    }
+  
+  
+  //----------GET THE MONTH---------//
+  
+    switch (now.getMonth()) {
+      case 0:
+          month = "January ";
+          break;
+      case 1:
+          month = "February ";
+          break;
+      case 2:
+          month = "March ";
+          break;
+      case 3:
+          month = "April ";
+          break;
+      case 4:
+          month = "May ";
+          break;
+      case 5:
+          month = "June ";
+          break;
+      case 6:
+          month = "July ";
+          break;
+      case 7:
+          month = "August ";
+          break;
+      case 8:
+          month = "September ";
+          break;
+      case 9:
+          month = "October ";
+          break;
+      case 10:
+          month = "November ";
+          break;
+      case 11:
+          month = "December ";
+          break;
+      }
+  
+  //--------ADD THE SUFFIX FOR EACH DAY----------//
+  
+    function end(day) {
+      day = now.getDate();
+  
+      if (day == 1 || day == 21 || day == 31) {
+        return "st";
+      } else if (day == 2 || day == 22) {
+        return "nd";
+      } else if (day == 3 || day == 23) {
+        return "rd";
+      } else if (day == 4 || day == 5 || day == 6 || day == 7 || day == 8 || day == 9 || day == 10 || day == 11 || day == 12 || day == 13 || day == 14 || day == 15 || day == 16 || day == 17 || day == 18 || day == 19 || day == 20 || day == 24 || day == 25 || day == 26 || day == 27 || day == 28 || day == 29 || day == 30){
+        return "th";
+      }
+    } 
+    //--------COMBINE ALL DATA TO CREATE DAY DATE & TIME----------------//
+    let inputTime = day + " " +  month + now.getDate() + end() + ", " + hour + ":" + mins + ":" + seconds + AMPM();
+    document.getElementById('time').innerHTML = inputTime;
+  }
+  
+  setInterval(setDate, 1000);
+  
+  setDate();
+
+  
+}
