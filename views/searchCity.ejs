@@ -1,0 +1,67 @@
+<%include partials/header%>
+<body class="searchCity">
+
+<div class="grid">
+
+	<nav id="nav">
+		<div class="test">
+			<img src="../images/logo.png" class="logo" alt="">
+			<p class="logo-text">Destination Weather</p>
+		</div>
+		<ul class="links">
+			<a href="/" class="aLink">Home</a>
+			<a href="#" class="aLink">Search</a>
+		</ul>
+	</nav>
+	<nav class="mobile-hide">
+		<nav id="nav-mobile">
+			<div class="test">
+				<img src="../images/logo.png" class="logo" alt="">
+				<p class="logo-text">Destination Weather</p>
+			</div>
+			<div class="hamburger" onclick="clicked();">
+				<div class="hamburger-line1"></div>
+				<div class="hamburger-line2"></div>
+				<div class="hamburger-line3"></div>
+			</div>
+		</nav>
+		<div class="menu">
+			<div class="links mobile-navLinks">
+				<div class="mobile-style">
+					<a href="/" class="aLink">Home</a>
+					<a href="#" class="aLink">Search</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+
+
+	<div id="errorMessage">
+		<p>We Could Not Find that City, Please Try Again...</p>
+	</div>
+
+		<h3 class="search-header"><p>Please Enter your City Destination</p></h3>
+		<input type="text" id="find" class="search-input"/>
+		<input type="submit" id="submit" class="search-submit"/>
+
+	
+
+	<div id="find__city-container">
+        <!--jsinjection reference-->
+		<!-- <div class="find__city--name">${city}</div>
+		<div class="find__city--contain">
+			<div class="find__city--temp">${temp}</div>
+			<div class="find__city--weather">${weather} </div>
+			<div class="find__city--details"> (${details})</div>
+			<img src="${icon}"class="find__city--icon" /> 
+			<div class="find__city--wind">Wind: ${wind}</div>
+			<div class="find__city--humidity">Humidity: ${humidity}</div>
+		</div> -->
+	</div>
+
+
+
+</div>   <!--grid--> 
+
+<%include partials/footer%>

@@ -340,10 +340,107 @@ function createSingleCityInfo(time,day,temps,icons){
     }); 
   }
 }
+}  
 
 
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////SEARCH FOR CITY JS LOGIC BELOW/////////////////////
+
+
+
+
+if (document.body.classList.contains("searchCity")){
+
+  let submit = document.getElementById("submit");
+
+  submit.addEventListener("click", function(e){
+    
+    e.preventDefault();
+  
+    let city;
+    let find = document.getElementById("find").value;
+
+    city = find;
+    findCity(city);
+    
+    document.getElementById("find").value = "";
+  });
+
+
+function findCity(city){
+
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=f062c5c06e802d5ddf919342f82d2b1e`)
+  .then(handleErrors) 
+  .then(res => res.json())
+
+  .then(data => {
+  
+  
+  console.log(data);
+
+
+  const city = data.name;
+  const kelvinToF = data.main.temp * 9/5 - 459.67;
+  const temp = (kelvinToF.toFixed(0)) + String.fromCharCode(176);
+  const weather = data.weather[0].main;
+  const detailsData = data.weather[0].description;
+  const details = detailsData.charAt(0).toUpperCase() + detailsData.slice(1);
+  const wind = data.wind.speed + "mph";
+  const humidity= data.main.humidity;
+  const iconData = data.weather[0].icon;
+  const icon = `https://openweathermap.org/img/w/${iconData}.png`;
+
+  const findCity = document.getElementById("find__city-container");
+
+  let findCityOutput = `		
+  <div class="find__city--name">${city}</div>
+  <div class="find__city--contain">
+    <div class="find__city--temp">${temp}</div>
+    <div class="find__city--weather">${weather} </div>
+    <div class="find__city--details"> (${details})</div>
+    <img src="${icon}"class="find__city--icon" /> 
+    <div class="find__city--wind">Wind: ${wind}</div>
+    <div class="find__city--humidity">Humidity: ${humidity}</div>
+  </div>
+  `;
+  
+  findCity.innerHTML = findCityOutput;
+  
+  })
+  .catch(err => {
+    console.log(err);
+  })
 }
+
+
+function handleErrors(res){
+  if (!res.ok){
+    throw Error(addError());
+  }
+  return res;
+}
+
+
+function addError() {
+  let errorMessage = document.getElementById("errorMessage");
+  
+  let showError = setInterval(function(){
+    errorMessage.style.display = "flex";
+  },50)
+  
+  setTimeout(function(){
+    clearInterval(showError);
+      errorMessage.style.display = "none";
+  },3000)
+}
+}
+
+
 
 
 
