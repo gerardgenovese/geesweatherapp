@@ -139,7 +139,7 @@ if (document.body.classList.contains("index")){
         const getNames = allData.forEach(names => {
           cityNames.push(names.name);
         });
-        //gets temp of city and converts to F from K
+        //gets temp of city 
         const getTemps = allData.map(val => {
           const tempD = val.main.temp;
           const temp = tempD.toFixed(0) + String.fromCharCode(176);
